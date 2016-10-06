@@ -1,0 +1,7 @@
+<resources>
+  <string name="app_name">Dagger2Sample Gigigo</string>
+  <string name="text_active_network">Active Network:</string>
+  <string name="logout">Logout</string>
+  <string name="text_welcome">Welcome</string>
+  <string name="error_user_not_login">ERROR: PLEASE Sign Up</string>
+</resources>

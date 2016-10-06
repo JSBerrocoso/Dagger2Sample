@@ -1,0 +1,25 @@
+allprojects {
+  ext {
+    libraries = [appcompatV7                : 'com.android.support:appcompat-v7:23.2.1',
+
+                 daggerCompiler             : 'com.google.dagger:dagger-compiler:2.0.2',
+                 dagger                     : 'com.google.dagger:dagger:2.0.2',
+                 annotationProvided:          'javax.annotation:jsr250-api:1.0',
+
+
+                 butterknife                : 'com.jakewharton:butterknife:8.4.0',
+                 butterknifeCompiler: 'com.jakewharton:butterknife-compiler:8.4.0'
+    ]
+
+    testLibraries = [
+                     junit               : 'junit:junit:4.12',
+                     expresso            : 'com.android.support.test.espresso:espresso-core:2.2.2'
+    ]
+
+    modules = [
+
+    ]
+  }
+
+
+}
