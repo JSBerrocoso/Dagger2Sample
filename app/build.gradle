@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+
 
 
 android {
@@ -23,12 +25,16 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
+  compileOptions {
+    targetCompatibility 1.8
+    sourceCompatibility 1.8
+  }
 }
 
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
 
-  androidTestCompile( rootProject.ext.testLibraries.expresso, {
+  androidTestCompile(rootProject.ext.testLibraries.expresso, {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
 
@@ -36,14 +42,30 @@ dependencies {
   testCompile rootProject.ext.testLibraries.junit
 
   compile rootProject.ext.libraries.appcompatV7
+  compile rootProject.ext.libraries.design
 
   compile rootProject.ext.libraries.dagger
   apt rootProject.ext.libraries.daggerCompiler
 
   provided rootProject.ext.libraries.annotationProvided
 
+  compile rootProject.ext.libraries.logger
+
   compile rootProject.ext.libraries.butterknife
   apt rootProject.ext.libraries.butterknifeCompiler
 
+  compile rootProject.ext.libraries.gson
+  compile rootProject.ext.libraries.retrofit
+  compile rootProject.ext.libraries.okHttp
+  compile rootProject.ext.libraries.retrofitAdapter
 
+  compile rootProject.ext.libraries.retrofitInterceptor
+
+  compile rootProject.ext.modules.textviews
+
+  compile rootProject.ext.libraries.circleimageview
+
+  compile rootProject.ext.libraries.rxandroid
+  compile rootProject.ext.libraries.rxjava
+  compile rootProject.ext.libraries.glide
 }

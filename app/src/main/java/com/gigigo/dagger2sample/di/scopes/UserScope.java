@@ -7,6 +7,5 @@ import javax.inject.Scope;
 /**
  * Created by santiago.berrocoso on 05/10/16.
  */
-@Scope @Retention(RetentionPolicy.RUNTIME)
-public @interface UserScope {
+@Scope @Retention(RetentionPolicy.RUNTIME) public @interface UserScope {
 }

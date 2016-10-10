@@ -2,33 +2,38 @@ package com.gigigo.dagger2sample.di.modules;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.preference.PreferenceManager;
+import com.gigigo.dagger2sample.data.api.services.ApiService;
+import com.gigigo.dagger2sample.data.api.services.SpotifyApiService;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
+import retrofit2.Retrofit;
 
 /**
  * Created by santiago.berrocoso on 04/10/16.
+ * Common Appmodule witch contains all Object useful by all class.
  */
 @Module public class ApplicationModule {
 
-  Application application;
+  private Application application;
 
   public ApplicationModule(Application application) {
     this.application = application;
   }
 
-  @Provides Context provideApplicationContext() {
+  @Provides @Singleton public Application provideApplication() {
     return application;
   }
 
-  @Singleton @Provides ConnectivityManager provideConnectivityManager() {
-    return (ConnectivityManager) application.getSystemService(Context.CONNECTIVITY_SERVICE);
+  @Singleton @Provides Context provideContext() {
+    return application;
   }
 
-  @Singleton @Provides SharedPreferences providePreferenceManager() {
-    return PreferenceManager.getDefaultSharedPreferences(application);
+  @Singleton @Provides Retrofit provideRetrofitInstance() {
+    return ApiService.getInstance();
+  }
+
+  @Provides @Singleton public SpotifyApiService provideSpotifyApiService(Retrofit retrofit) {
+    return retrofit.create(SpotifyApiService.class);
   }
 }
